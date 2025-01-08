@@ -11,6 +11,9 @@
     - [3.1 Comparison with OSI Model](#31-comparison-with-osi-model)
     - [3.2 TCP/IP Layers](#32-tcpip-layers)
   - [4. IP Addressing](#4-ip-addressing)
+    - [MAC Address vs IP Address](#mac-address-vs-ip-address)
+      - [MAC Address](#mac-address)
+      - [IP Address](#ip-address)
     - [4.1 IPv4 and IPv6](#41-ipv4-and-ipv6)
     - [4.2 Public vs Private IP Addresses](#42-public-vs-private-ip-addresses)
     - [4.3 Localhost and Subnets](#43-localhost-and-subnets)
@@ -88,6 +91,47 @@ The TCP/IP model is a simplified, four-layer model used in real-world networking
 4. **Application**: Combines Session, Presentation, and Application layers of OSI.
 
 ## 4. IP Addressing
+
+### MAC Address vs IP Address
+
+#### MAC Address
+MAC (Media Access Control) addresses are unique identifiers assigned to network interface controllers (NICs).
+
+Key characteristics:
+- 48-bit address in hexadecimal format (e.g., 00:1A:2B:3C:4D:5E)
+- Assigned by manufacturers during production
+- Used for local network identification
+- Functions at OSI model's data link layer (Layer 2)
+
+Example of obtaining MAC address:
+```sh
+# On Linux/macOS
+ifconfig | grep ether
+
+# On Windows
+ipconfig /all | findstr Physical
+```
+
+#### IP Address
+IP (Internet Protocol) addresses are numerical labels assigned to devices on a network.
+
+Key characteristics:
+- IPv4 (32-bit) or IPv6 (128-bit)
+- Used for global identification and routing
+- Can be dynamic (DHCP-assigned) or static
+- Functions at OSI model's network layer (Layer 3)
+
+Example of obtaining IP address:
+```sh
+# On Linux/macOS
+ifconfig | grep inet
+
+# On Windows
+ipconfig
+```
+
+Main difference: MAC addresses are for local network identification, while IP addresses enable global internet communication.
+
 
 ### 4.1 IPv4 and IPv6
 - **IPv4**: 32-bit addresses (e.g., 192.168.1.1)
