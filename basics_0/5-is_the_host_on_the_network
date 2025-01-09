@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Script that accept and argument and display the ping 5 times
+
+ping5() {
+	if [[ -z "$1" ]]; then
+		echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
+	else
+			ping -c 5 "$1"
+	fi
+}
+
+ping5 "$1"
