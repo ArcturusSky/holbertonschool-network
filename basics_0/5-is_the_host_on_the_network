@@ -2,7 +2,8 @@
 # Script that accept and argument and display the ping 5 times
 
 ping5() {
-	if [[ -z "$1" ]]; then
+	if [ -z "$1" ]; then # -z is for testing empty string
+	# On contrary -n is for testing non empty string
 		echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
 	else
 			ping -c 5 "$1"
