@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Script that configures an Ubuntu server while changing localhost and facebook IP
 
-# Completely cleaning host file, except localhost ip
-sudo sh -c 'echo "127.0.0.1 localhost" > /etc/hosts'
+# Completely cleaning host file
+sudo sh -c 'echo "" > /etc/hosts'
 
 # Modifying already exising IP of localhost
 echo "127.0.0.2        localhost" | sudo tee -a /etc/hosts > /dev/null
