@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Script that configures an Ubuntu server while changing localhost and facebook IP
 
-# Delete potential duplicate of facebook
-sudo sed -i '/facebook.com/d' /etc/hosts
+# Completely cleaning host file, except localhost ip
+sudo sh -c 'echo "127.0.0.1 localhost" > /etc/hosts'
 
 # Modifying already exising IP of localhost
 sudo sed -i 's/127.0.0.1 localhost/127.0.0.2 localhost/' /etc/hosts
