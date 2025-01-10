@@ -5,7 +5,7 @@
 sudo sh -c 'echo "127.0.0.1 localhost" > /etc/hosts'
 
 # Modifying already exising IP of localhost
-sudo sed -i 's/127.0.0.1        localhost/127.0.0.2 localhost/' /etc/hosts
+sudo sed -i 's/127.0.0.1 localhost/127.0.0.2        localhost/' /etc/hosts
 
 # Add facebook specific IP
 echo "8.8.8.8        facebook.com" | sudo tee -a /etc/hosts > /dev/null
