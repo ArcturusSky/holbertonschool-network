@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-#
+# Script to listen a port and capture what is written on it
+sudo nc -l -p 98
