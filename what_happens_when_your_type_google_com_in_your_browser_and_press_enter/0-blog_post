@@ -1,0 +1,94 @@
+# What Happens When You Type `https://www.google.com` in Your Browser and Press Enter?
+
+What happens when you type `https://www.google.com` in your browser? This is something that almost everyone do everyday but do you know what it does exactly? Today I'm going to explain this, as simply as possible.
+
+---
+
+## 1. **DNS: Resolving `www.google.com` to an IP Address**  
+Your browser first needs to convert the human-readable domain name `www.google.com` into an IP address (e.g., `142.250.190.78`) or another hostname (e.g., `subdomain.google.com`). This process involves:  
+- **Checking Cache**: The browser, operating system, or router might already have the IP address cached.  
+- **DNS Recursive Query**: If the IP isn’t cached, the DNS resolver queries other DNS servers until it reaches Google’s authoritative DNS server, which provides the IP address or another hostname.  
+
+The DNS resolution process is essential for directing your request to the correct server.
+
+---
+
+## 2. **Connecting to the Server on HTTPS Port 443**  
+After resolving the IP address, your browser sends the request to Google’s server over **port 443**, which is the standard port for HTTPS traffic. This ensures the request reaches the intended service on Google’s server infrastructure. Port 443 is widely used for secure, encrypted web communications.
+
+---
+
+## 3. **Firewalls: Filtering Traffic on TCP/443**  
+Before your request reaches Google’s infrastructure, it passes through multiple firewalls that:  
+- **Filter Traffic**: Only allow legitimate requests on TCP port 443.  
+- **Prevent Attacks**: Detect and block suspicious or malicious traffic, such as DDoS attacks or unauthorized access attempts.  
+
+Firewalls are critical for protecting Google’s infrastructure from threats while allowing valid requests to pass through.
+
+---
+
+## 4. **HTTPS/SSL: Encrypting the Traffic**  
+Since the URL begins with `https://`, your browser establishes a secure connection using **HTTPS**, which relies on **SSL/TLS encryption**. The process includes:  
+1. **SSL Handshake**: Your browser verifies Google’s SSL certificate to ensure you’re communicating with the authentic Google server.  
+2. **Encryption**: The browser and server agree on a symmetric encryption key to secure the session.  
+3. **Secure Communication**: All data exchanged between your browser and Google’s server is encrypted, protecting it from eavesdropping or tampering.  
+
+This ensures the confidentiality and integrity of the data in transit.
+
+---
+
+## 5. **Load Balancer: Distributing the Request**  
+Google’s infrastructure uses a **load balancer** to manage incoming traffic. The load balancer:  
+- **Distributes Requests**: Routes your request to one of many available web servers, ensuring no single server is overwhelmed.  
+- **Optimizes Performance**: Balances traffic based on factors like server availability, geographic location, and response time.  
+- **Ensures Reliability**: Automatically reroutes traffic if a server is down or underperforming.
+
+The load balancer is a crucial component for scalability and fault tolerance.
+
+---
+
+## 6. **Web Server: Serving the Page**  
+The load balancer forwards your request to a **web server**, which:  
+- **Handles HTTP Requests**: Processes your browser’s request for the webpage.  
+- **Serves Static Content**: Delivers files like HTML, CSS, and images directly.  
+- **Delegates Dynamic Requests**: For more complex operations, the web server passes the request to an application server.
+
+Common web servers include Nginx and Apache, but Google uses its own highly optimized solutions.
+
+---
+
+## 7. **Application Server: Generating the Page**  
+Dynamic content, such as personalized search results, is handled by an **application server**. This server:  
+- **Processes Business Logic**: Runs the core functionality of Google’s search engine, interpreting your query and determining the results.  
+- **Interacts with Other Systems**: Calls external services or APIs as needed to generate the webpage.
+
+The application server plays a key role in creating the content your browser requested.
+
+---
+
+## 8. **Database: Querying for Data**  
+To generate the requested content, the application server queries a **database**. In Google’s case:  
+- **Indexes the Web**: Google’s massive database stores and organizes information from across the internet.  
+- **Executes Search Queries**: Retrieves relevant results based on your search terms.  
+- **Optimized Storage**: Google uses distributed database systems like Bigtable and Spanner to handle billions of queries per second.  
+
+The database ensures that the application server has the data it needs to serve your request.
+
+---
+
+## Recap of the Workflow  
+Here’s a step-by-step summary of what happens:  
+1. **DNS Lookup**: Resolves `www.google.com` to an IP address or another hostname.  
+2. **Port 443**: Sends the request to the server on the secure HTTPS port (TCP/443).  
+3. **Firewalls**: Filters traffic to allow only legitimate requests.  
+4. **HTTPS/SSL**: Encrypts the connection for secure communication.  
+5. **Load Balancer**: Routes the request to a web server.  
+6. **Web Server**: Serves static content and forwards dynamic requests.  
+7. **Application Server**: Generates dynamic content by executing business logic.  
+8. **Database**: Queries data to support the application server’s logic.  
+
+---
+
+## Conclusion
+
+Understanding this process in detail is not only essential for excelling in technical interviews but also for becoming a better engineer who can design, optimize, and fix complex systems. Who would have know that so many things was happening behind just the simple and daily request: "www.google.com"
